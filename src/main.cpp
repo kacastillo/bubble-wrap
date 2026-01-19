@@ -4,10 +4,14 @@
 #include <bn_keypad.h>
 #include <bn_sprite_ptr.h>
 #include <bn_sprite_items_dot.h>
+#include <bn_log.h>
+#include <bn_vector.h>
 
 int main()
 {
     bn::core::init();
+    bn::vector<bn::sprite_ptr, 10> circles = {};
+
     // bn::sprite_ptr myCircle = bn::sprite_items::dot.create_sprite(10, 40);
     // bn::sprite_ptr myCircle = bn::sprite_items::dot.create_sprite(-40, 40);
     // bn::sprite_ptr myCircle2 = bn::sprite_items::dot.create_sprite(-30, 40);
@@ -20,8 +24,10 @@ int main()
     // bn::sprite_ptr myCircle9 = bn::sprite_items::dot.create_sprite(40, 40);
 
     for (int x = -40; x <= 40; x += 10)
+
     {
         bn::sprite_ptr myCircle = bn::sprite_items::dot.create_sprite(x, 40);
+        circles.push_back(myCircle);
     }
 
     bn::backdrop::set_color(bn::color(21, 15, 14));
@@ -35,7 +41,7 @@ int main()
 
         if (bn::keypad::b_pressed())
         {
-            bn::backdrop::set_color(bn::color(12, 11, 2));
+            bn::backdrop::set_color(bn::color(12, 22, 2));
         }
 
         bn::core::update();
